@@ -21,6 +21,6 @@ class GenerateApiKey extends Command
         $apiKey = ApiKey::create(['key' => Str::random(80)]);
 
         $this->info('API key generated and stored successfully.');
-        $this->info('Generated API key: ' . $apiKey->key);
+        $this->info('Generated API key: ' . $apiKey['key']);
     }
 }
