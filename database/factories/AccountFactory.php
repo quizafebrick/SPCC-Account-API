@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Account;
 use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Account>
@@ -21,6 +20,8 @@ class AccountFactory extends Factory
         $lastName = $this->faker->lastName;
         $email = strtolower($lastName . '_' . $firstName) . '@spcc.edu.ph';
         $studentNo = '04-' . $this->faker->randomNumber(2, true) . '-' . $this->faker->randomNumber(5, true);
+        $section_id = random_int(1, 18);
+        $semester_id = random_int(1, 2);
 
         return [
             'email_address' => $email,
@@ -28,6 +29,8 @@ class AccountFactory extends Factory
             'middlename' => $middleName,
             'lastname' => $lastName,
             'student_no' => $studentNo,
+            'section_id' => $section_id,
+            'semester_id' => $semester_id,
         ];
     }
 }

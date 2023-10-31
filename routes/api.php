@@ -19,4 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/accounts', [AccountController::class,'getAccount'])->name('getAccounts')->middleware('api.key');
+Route::get('/get-accounts', [AccountController::class,'getAccount'])->name('getAccounts')->middleware('api.key');
+
+Route::get('/accounts', [AccountController::class,'getAccountAPI'])->name('getAccountApi');

@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Section;
+use App\Models\Semester;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -18,6 +20,8 @@ return new class extends Migration
             $table->string('middlename');
             $table->string('lastname');
             $table->string('email_address');
+            $table->foreignIdFor(Section::class);
+            $table->foreignIdFor(Semester::class);
             $table->timestamps();
         });
     }

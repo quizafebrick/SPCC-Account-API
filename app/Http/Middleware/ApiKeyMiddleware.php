@@ -18,7 +18,7 @@ class ApiKeyMiddleware
         }
 
         // * VERIFY THE API KEY AGAINST THE APIKEY MODEL * //
-        abort_if (!ApiKey::where('key', $apiKey)->first(), 404);
+        abort_if (!ApiKey::where('key', $apiKey)->first(), 403, 'Unauthorized, Wrong Api Key.');
 
         return $next($request);
     }
