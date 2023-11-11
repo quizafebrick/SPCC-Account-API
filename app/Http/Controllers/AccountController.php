@@ -39,4 +39,29 @@ class AccountController extends Controller
 
         return response()->json($getAccounts);
     }
+
+    public function getStudentAPI(Account $account, ApiKey $apiKey)
+    {
+        $validApiKey = $apiKey->where('key', request()->header('X-API-Key'))->exists();
+
+        if (empty(request()->header('X-API-Key'))) {
+            return response()->json(['error' => "Unauthorized. API key is missing."], 403);
+        }
+
+        if (!$validApiKey) {
+            return response()->json(['error' => "Unauthorized. Wrong API key."], 403);
+        }
+
+        $accounts = $account->with('semester', 'section')->orderBy('lastname')->get();
+
+        $getAccounts = $accounts->map(function ($account) {
+            return [
+                'fullname' => $account->lastname. ', ' . $account->firstname. ' ' .$account->middlename,
+                'email_address' => $account->email_address,
+                'student_no' => $account->student_no,
+            ];
+        });
+
+        return response()->json($getAccounts);
+    }
 }
