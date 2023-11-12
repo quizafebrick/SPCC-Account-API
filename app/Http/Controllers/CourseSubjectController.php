@@ -11,9 +11,11 @@ class CourseSubjectController extends Controller
 {
     public function getCourseSubject(CourseSubject $courseSubject)
     {
-        $courseSubjects = $courseSubject->with('curriculum_subject', 'year_level', 'semester')
-            // ->where('year_level_id', 4)
-            // ->where('semester_id', 2)
+        $courseSubjects = $courseSubject->join('curriculum_subjects', 'course_subjects.curriculum_subject_id', '=', 'curriculum_subjects.id')
+            ->with('curriculum_subject', 'year_level', 'semester')
+            ->orderBy('curriculum_subjects.course_code', 'ASC')
+            // ->where('year_level_id', 1)
+            // ->where('semester_id', 1)
             ->get();
 
         $getCourseSubjects = $courseSubjects->map(function ($courseSubject) {
@@ -61,7 +63,10 @@ class CourseSubjectController extends Controller
             return response()->json(['error' => "Unauthorized. Wrong API key."], 403);
         }
 
-        $courseSubjects = $courseSubject->with('semester', 'section')->orderBy('lastname')->get();
+        $courseSubjects = $courseSubject->join('curriculum_subjects', 'course_subjects.curriculum_subject_id', '=', 'curriculum_subjects.id')
+            ->with('curriculum_subject', 'year_level', 'semester')
+            ->orderBy('curriculum_subjects.course_code', 'ASC')
+            ->get();
 
         $getCourseSubjects = $courseSubjects->map(function ($courseSubject) {
             $preRequisites = explode(', ', $courseSubject->pre_requisite);

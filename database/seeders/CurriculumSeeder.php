@@ -303,7 +303,7 @@ class CurriculumSeeder extends Seeder
             ],
             [
                 'description' => 'Application Development and Emerging Technologies',
-                'course_code' => 'ADET ',
+                'course_code' => 'ADET',
                 'lec' => 2,
                 'lab' => 1,
                 'units' => 3
