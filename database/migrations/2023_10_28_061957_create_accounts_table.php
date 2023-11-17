@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('email_address');
             $table->foreignIdFor(Section::class);
             $table->foreignIdFor(Semester::class);
+            $table->string('status');
             $table->timestamps();
         });
     }

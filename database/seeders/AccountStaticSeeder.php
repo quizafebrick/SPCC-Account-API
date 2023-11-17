@@ -22,6 +22,7 @@ class AccountStaticSeeder extends Seeder
                 'email_address' => 'quiza_febrick@spcc.edu.ph',
                 'section_id' => '17',
                 'semester_id' => '1',
+                'status' => 'Regular',
             ],
             [
                 'student_no' => '04-20-31101',
@@ -31,6 +32,7 @@ class AccountStaticSeeder extends Seeder
                 'email_address' => 'mateo_charlotte@spcc.edu.ph',
                 'section_id' => '17',
                 'semester_id' => '1',
+                'status' => 'Regular',
             ]
         ];
 

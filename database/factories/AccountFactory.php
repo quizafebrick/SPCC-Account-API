@@ -22,6 +22,7 @@ class AccountFactory extends Factory
         $studentNo = '04-' . $this->faker->randomNumber(2, true) . '-' . $this->faker->randomNumber(5, true);
         $section_id = random_int(1, 18);
         $semester_id = random_int(1, 2);
+        $status = $this->faker->boolean(80) ? 'Regular' : 'Irregular';
 
         return [
             'email_address' => $email,
@@ -31,6 +32,7 @@ class AccountFactory extends Factory
             'student_no' => $studentNo,
             'section_id' => $section_id,
             'semester_id' => $semester_id,
+            'status' => $status,
         ];
     }
 }

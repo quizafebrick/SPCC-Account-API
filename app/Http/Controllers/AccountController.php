@@ -33,7 +33,7 @@ class AccountController extends Controller
                 'email_address' => $account->email_address,
                 'student_no' => $account->student_no,
                 'section_name' => $account->section->name,
-                'semester_name' => $account->semester->name
+                'semester_name' => $account->semester->name,
             ];
         });
 
@@ -86,6 +86,7 @@ class AccountController extends Controller
                 'lastname' => $account->lastname,
                 'email_address' => $account->email_address,
                 'student_no' => $account->student_no,
+                'status' => $account->status
             ];
         });
 
