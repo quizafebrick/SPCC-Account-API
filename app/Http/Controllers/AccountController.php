@@ -92,4 +92,32 @@ class AccountController extends Controller
 
         return response()->json($getAccounts);
     }
+
+    public function getStudentRfidNo(Account $account, ApiKey $apiKey, $rfid_no)
+    {
+        $validApiKey = $apiKey->where('key', request()->header('X-API-Key'))->exists();
+
+        if (empty(request()->header('X-API-Key'))) {
+            return response()->json(['error' => "Unauthorized. API key is missing."], 403);
+        }
+
+        if (!$validApiKey) {
+            return response()->json(['error' => "Unauthorized. Wrong API key."], 403);
+        }
+
+        $accounts = $account->where('rfid_no', $rfid_no)->get();
+
+        $getAccounts = $accounts->map(function ($account) {
+            return [
+                'firstname' => $account->firstname,
+                'middlename' => $account->middlename,
+                'lastname' => $account->lastname,
+                'email_address' => $account->email_address,
+                'student_no' => $account->student_no,
+                'status' => $account->status
+            ];
+        });
+
+        return response()->json($getAccounts);
+    }
 }

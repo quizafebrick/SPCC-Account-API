@@ -23,6 +23,7 @@ class AccountStaticSeeder extends Seeder
                 'section_id' => '17',
                 'semester_id' => '1',
                 'status' => 'Regular',
+                'rfid_no' => '0600953248',
             ],
             [
                 'student_no' => '04-20-31101',
@@ -33,6 +34,7 @@ class AccountStaticSeeder extends Seeder
                 'section_id' => '17',
                 'semester_id' => '1',
                 'status' => 'Regular',
+                'rfid_no' => '0600953248'
             ]
         ];
 

@@ -27,4 +27,6 @@ Route::get('/accounts', [AccountController::class,'getAccountVotingAPI'])->name(
 
 Route::get('/students', [AccountController::class,'getStudentAPI'])->name('getStudentAPI');
 
+Route::get('/search-students/{rfid_no}', [AccountController::class,'getStudentRfidNo'])->name('getStudentRfidNo');
+
 Route::get('/course-subjects', [CourseSubjectController::class,'getCourseSubjectAPI'])->name('getCourseSubjectAPI');

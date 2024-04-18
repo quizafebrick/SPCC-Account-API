@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('middlename');
             $table->string('lastname');
             $table->string('email_address');
+            $table->string('rfid_no')->nullable();
             $table->foreignIdFor(Section::class);
             $table->foreignIdFor(Semester::class);
             $table->string('status');
